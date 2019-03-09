@@ -11,7 +11,7 @@ class Ticket extends Model
 
     public function saveTicket($data)
     {
-        $this->user_id = auth()->user()->id;
+        $this->user_id = $data['user_id'];
         $this->title = $data['title'];
         $this->description = $data['description'];
         $this->save();
