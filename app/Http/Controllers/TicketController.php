@@ -17,7 +17,7 @@ class TicketController extends Controller
     {
         $tickets = Ticket::where('user_id', auth()->user()->id)->get();
 
-        return view('user.index',compact('tickets'));
+        return view('user.index', compact('tickets'));
     }
 
     /**
@@ -43,12 +43,13 @@ class TicketController extends Controller
     {
         $ticket = new Ticket();
         $data = $this->validate($request, [
-            'description'=>'required',
-            'title'=> 'required'
+            'description' => 'required',
+            'title' => 'required'
         ]);
 
         $ticket->saveTicket($data);
-        return redirect('/tickets')->with('success', 'New support ticket has been created! Wait sometime to get resolved');
+        return redirect('/tickets')->
+        with('success', 'New support ticket has been created! Wait sometime to get resolved');
     }
 
     /**
@@ -79,8 +80,8 @@ class TicketController extends Controller
     {
         $ticket = new Ticket();
         $data = $this->validate($request, [
-            'description'=>'required',
-            'title'=> 'required'
+            'description' => 'required',
+            'title' => 'required'
         ]);
         $data['id'] = $id;
         $ticket->updateTicket($data);
