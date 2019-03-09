@@ -19,7 +19,7 @@ class TicketsTests extends TestCase
      *
      * @return void
      */
-    public function testTickets()
+    public function testDisplayTicketsForLoggedUser()
     {
 
         $user = factory(User::class)->create();
