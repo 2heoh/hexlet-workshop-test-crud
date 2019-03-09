@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Ticket;
 use App\User;
 use Tests\TestCase;
 
@@ -22,6 +23,9 @@ class TicketsTests extends TestCase
     public function testDisplayTicketsForLoggedUser()
     {
         $user = factory(User::class)->create();
+        factory(Ticket::class)->create([
+            'user_id' => $user->id
+        ]);
 
         $response = $this->actingAs($user)->get('/tickets');
 
