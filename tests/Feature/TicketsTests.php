@@ -56,13 +56,22 @@ class TicketsTests extends TestCase
 
         $data = ['title' => 'new title', 'description' => 'new description'];
 
-        $response = $this->actingAs($this->user)->patch('/edit/ticket/'.$ticket->id, $data);
+        $response = $this->actingAs($this->user)->patch('/edit/ticket/' . $ticket->id, $data);
 
         $response->assertStatus(302);
         $data['id'] = $ticket->id;
         $this->assertDatabaseHas('tickets', $data);
     }
 
+    public function testDeleteTicket()
+    {
+        $ticket = factory(Ticket::class)->create([
+            'user_id' => $this->user->id
+        ]);
 
+        $response = $this->actingAs($this->user)->delete('/delete/ticket/' . $ticket->id);
 
+        $response->assertStatus(302);
+        $this->assertDatabaseMissing('tickets', ['id' => $ticket->id]);
+    }
 }

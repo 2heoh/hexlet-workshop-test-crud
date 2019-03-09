@@ -85,7 +85,7 @@ class TicketController extends Controller
             'title' => 'required'
         ]);
         $data['id'] = $id;
-        $data['user_id']= auth()->user()->id;
+        $data['user_id'] = auth()->user()->id;
         $ticket->updateTicket($data);
 
         return redirect('/tickets')->with('success', 'New support ticket has been updated!!');
