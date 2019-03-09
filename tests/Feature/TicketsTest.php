@@ -7,7 +7,7 @@ use App\User;
 use Illuminate\Support\Facades\Artisan;
 use Tests\TestCase;
 
-class TicketsTests extends TestCase
+class TicketsTest extends TestCase
 {
 
     private $user;
