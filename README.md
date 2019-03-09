@@ -1,4 +1,6 @@
-## Hexlet test workshop - CLI
+## Hexlet test workshop - CRUD
+
+[![Travis-CI Build Status](https://travis-ci.org/2heoh/hexlet-workshop-test-crud.svg?branch=master)](https://travis-ci.org/2heoh/hexlet-workshop-test-crud)
 
 - install mysql
 - setup connection to mysql in .env
