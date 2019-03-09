@@ -21,7 +21,7 @@ class Ticket extends Model
     public function updateTicket($data)
     {
         $ticket = $this->find($data['id']);
-        $ticket->user_id = auth()->user()->id;
+        $ticket->user_id = $data['user_id'];
         $ticket->title = $data['title'];
         $ticket->description = $data['description'];
         $ticket->save();
