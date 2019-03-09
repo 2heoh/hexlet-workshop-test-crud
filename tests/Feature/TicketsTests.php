@@ -21,7 +21,6 @@ class TicketsTests extends TestCase
      */
     public function testTickets()
     {
-
         $user = factory(User::class)->create();
 
         $response = $this->actingAs($user)->get('/tickets');
@@ -30,4 +29,3 @@ class TicketsTests extends TestCase
         $response->assertViewIs('user.index');
     }
 }
-
