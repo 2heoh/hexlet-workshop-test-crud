@@ -27,5 +27,4 @@ class Ticket extends Model
         $ticket->save();
         return 1;
     }
-
 }
