@@ -48,24 +48,6 @@ class TicketsTest extends TestCase
         $this->assertDatabaseHas('tickets', $data);
     }
 
-    public function testImageUploadOnTicketCreate()
-    {
-        $data = [
-            'title' => 'title',
-            'description' => 'description',
-            'original_image_url' => 'some image from internet.jpg'
-        ];
-
-        $response = $this->actingAs($this->user)->post(route('ticket.create'), $data);
-
-        $response->assertStatus(302);
-        $data['image_url'] = 'image on server.jpg';
-        $this->assertDatabaseHas('tickets', $data);
-        $this->assertTrue(Storage::exists('public/' . $data['image_url']));
-
-        Storage::delete('public/' . $data['image_url']);
-    }
-
     public function testUpdateTicket()
     {
         $ticket = factory(Ticket::class)->create([
@@ -92,4 +74,23 @@ class TicketsTest extends TestCase
         $response->assertStatus(302);
         $this->assertDatabaseMissing('tickets', ['id' => $ticket->id]);
     }
+
+    public function testImageUploadOnTicketCreate()
+    {
+        $data = [
+            'title' => 'title',
+            'description' => 'description',
+            'original_image_url' => 'some image from internet.jpg'
+        ];
+
+        $response = $this->actingAs($this->user)->post(route('ticket.create'), $data);
+
+        $response->assertStatus(302);
+        $data['image_url'] = 'image on server.jpg';
+        $this->assertDatabaseHas('tickets', $data);
+        $this->assertTrue(Storage::exists('public/' . $data['image_url']));
+
+        Storage::delete('public/' . $data['image_url']);
+    }
+
 }
