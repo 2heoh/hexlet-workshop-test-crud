@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Ticket;
 use App\User;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
 class TicketsTest extends TestCase
@@ -44,6 +45,22 @@ class TicketsTest extends TestCase
 
         $response->assertStatus(302);
         $this->assertDatabaseHas('tickets', $data);
+    }
+    public function testScreenshotUploadWithCreateTicket()
+    {
+        $this->markTestSkipped();
+        $data = [
+            'title' => 'title',
+            'description' => 'description',
+            'image_url' => 'some image from internet.jpg'
+        ];
+
+        $response = $this->actingAs($this->user)->post(route('ticket.create'), $data);
+
+        $response->assertStatus(302);
+        $data['image_url'] = 'image on disc.jpg';
+        $this->assertDatabaseHas('tickets', $data);
+        $this->assertTrue(Storage::exists('public/'.$data['image_url']));
     }
 
     public function testUpdateTicket()

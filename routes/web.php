@@ -18,7 +18,7 @@
 //});
 
 Route::get('/create/ticket','TicketController@create');
-Route::post('/create/ticket','TicketController@store');
+Route::post('/create/ticket','TicketController@store')->name('ticket.create');
 Route::get('/tickets', 'TicketController@index');
 
 Route::get('/edit/ticket/{id}','TicketController@edit');
