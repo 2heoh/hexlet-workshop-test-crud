@@ -20,11 +20,6 @@ class TicketsTest extends TestCase
         $this->user = factory(User::class)->create();
     }
 
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
     public function testDisplayTicketsForLoggedUser()
     {
         $ticket = factory(Ticket::class)->create([
