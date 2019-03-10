@@ -50,13 +50,11 @@ class TicketsTest extends TestCase
 
     public function testImageUploadOnTicketCreate()
     {
-        $this->markTestSkipped("skip");
         $data = [
             'title' => 'title',
             'description' => 'description',
             'original_image_url' => 'some image from internet.jpg'
         ];
-        // magic with job
 
         $response = $this->actingAs($this->user)->post(route('ticket.create'), $data);
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\LoadImageUrl;
 use Illuminate\Http\Request;
 use App\Ticket;
 
@@ -50,6 +51,7 @@ class TicketController extends Controller
 
         $data['user_id'] = auth()->user()->id;
         $ticket->saveTicket($data);
+        dispatch(new LoadImageUrl($ticket));
         return redirect('/tickets')
             ->with('success', 'New support ticket has been created! Wait sometime to get resolved');
     }
