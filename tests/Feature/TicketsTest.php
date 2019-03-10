@@ -83,14 +83,14 @@ class TicketsTest extends TestCase
             'original_image_url' => 'some image from internet.jpg'
         ];
 
+        Storage::fake('screenshots');
+
         $response = $this->actingAs($this->user)->post(route('ticket.create'), $data);
 
         $response->assertStatus(302);
         $data['image_url'] = 'image on server.jpg';
         $this->assertDatabaseHas('tickets', $data);
-        $this->assertTrue(Storage::exists('public/' . $data['image_url']));
-
-        Storage::delete('public/' . $data['image_url']);
+        Storage::disk('screenshots')->assertExists($data['image_url']);
     }
 
 }
