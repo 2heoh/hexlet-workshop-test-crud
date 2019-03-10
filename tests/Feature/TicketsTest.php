@@ -62,6 +62,8 @@ class TicketsTest extends TestCase
         $data['image_url'] = 'image on server.jpg';
         $this->assertDatabaseHas('tickets', $data);
         $this->assertTrue(Storage::exists('public/'.$data['image_url']));
+
+        Storage::delete('public/'.$data['image_url']);
     }
 
     public function testUpdateTicket()
