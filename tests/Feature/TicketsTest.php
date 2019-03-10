@@ -59,7 +59,7 @@ class TicketsTest extends TestCase
         $response->assertStatus(302);
         $data['image_url'] = 'image on server.jpg';
         $this->assertDatabaseHas('tickets', $data);
-        $this->assertTrue(Storage::exists('public/'.$data['image_url']));
+        $this->assertTrue(Storage::exists('public/' . $data['image_url']));
     }
 
     public function testUpdateTicket()

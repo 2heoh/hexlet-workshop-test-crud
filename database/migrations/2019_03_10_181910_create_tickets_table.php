@@ -23,7 +23,6 @@ class CreateTicketsTable extends Migration
             $table->timestamps();
         });
 
-//        Schema::update();
     }
 
     /**
