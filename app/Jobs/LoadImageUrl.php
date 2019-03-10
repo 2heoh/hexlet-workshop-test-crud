@@ -35,8 +35,8 @@ class LoadImageUrl implements ShouldQueue
     public function handle()
     {
         $imageName = 'image on server.jpg';
-        Storage::put('public/'.$imageName, '123');
-        $this->ticket->image_url= $imageName;
+        Storage::put('public/' . $imageName, '123');
+        $this->ticket->image_url = $imageName;
         $this->ticket->save();
     }
 }
