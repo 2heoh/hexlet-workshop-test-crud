@@ -17,6 +17,7 @@ use Faker\Generator as Faker;
 $factory->define(Ticket::class, function (Faker $faker) {
     return [
         'title' => $faker->sentence,
-        'description' => $faker->paragraph
+        'description' => $faker->paragraph,
+        'original_image_url' => $faker->url
     ];
 });

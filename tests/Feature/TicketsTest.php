@@ -38,27 +38,29 @@ class TicketsTest extends TestCase
         $data = [
             'title' => 'title',
             'description' => 'description',
-            'image_url' => 'image'
+            'original_image_url' => 'image'
         ];
 
         $response = $this->actingAs($this->user)->post('/create/ticket', $data);
 
+//        $response->dump();
         $response->assertStatus(302);
         $this->assertDatabaseHas('tickets', $data);
     }
-    public function testScreenshotUploadWithCreateTicket()
+
+    public function testImageUploadOnTicketCreate()
     {
-        $this->markTestSkipped();
         $data = [
             'title' => 'title',
             'description' => 'description',
-            'image_url' => 'some image from internet.jpg'
+            'original_image_url' => 'some image from internet.jpg'
         ];
+        // magic with job
 
         $response = $this->actingAs($this->user)->post(route('ticket.create'), $data);
 
         $response->assertStatus(302);
-        $data['image_url'] = 'image on disc.jpg';
+        $data['image_url'] = 'image on server.jpg';
         $this->assertDatabaseHas('tickets', $data);
         $this->assertTrue(Storage::exists('public/'.$data['image_url']));
     }
@@ -69,7 +71,7 @@ class TicketsTest extends TestCase
             'user_id' => $this->user->id
         ]);
 
-        $data = ['title' => 'new title', 'description' => 'new description'];
+        $data = ['title' => 'new title', 'description' => 'new description', 'original_image_url' => 'image.jpg'];
 
         $response = $this->actingAs($this->user)->patch(route('ticket.edit', ['id' => $ticket->id]), $data);
 

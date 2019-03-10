@@ -15,7 +15,7 @@ class Ticket extends Model
         $this->user_id = $data['user_id'];
         $this->title = $data['title'];
         $this->description = $data['description'];
-        $this->image_url = $data['image_url'];
+        $this->original_image_url = $data['original_image_url'];
         $this->save();
         return 1;
     }
@@ -26,6 +26,7 @@ class Ticket extends Model
         $ticket->user_id = $data['user_id'];
         $ticket->title = $data['title'];
         $ticket->description = $data['description'];
+        $ticket->original_image_url = $data['original_image_url'];
         $ticket->save();
         return 1;
     }

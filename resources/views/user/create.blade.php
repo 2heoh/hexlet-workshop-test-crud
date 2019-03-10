@@ -24,8 +24,8 @@
 
                 </div>
                 <div class="form-group">
-                    <label for="image_url">Choose from the Internet:</label>
-                    <input type="input" name="image_url">
+                    <label for="original_image_url">Choose from the Internet:</label>
+                    <input type="input" name="original_image_url">
                 </div>
                 <button type="submit" class="btn btn-primary">Create</button>
             </form>

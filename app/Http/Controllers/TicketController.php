@@ -45,7 +45,7 @@ class TicketController extends Controller
         $data = $this->validate($request, [
             'description' => 'required',
             'title' => 'required',
-            'image_url' => 'required'
+            'original_image_url' => 'required'
         ]);
 
         $data['user_id'] = auth()->user()->id;
@@ -83,7 +83,8 @@ class TicketController extends Controller
         $ticket = new Ticket();
         $data = $this->validate($request, [
             'description' => 'required',
-            'title' => 'required'
+            'title' => 'required',
+            'original_image_url' => 'required'
         ]);
         $data['id'] = $id;
         $data['user_id'] = auth()->user()->id;
