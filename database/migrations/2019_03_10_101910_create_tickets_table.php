@@ -18,8 +18,11 @@ class CreateTicketsTable extends Migration
             $table->bigInteger('user_id');
             $table->string("title");
             $table->string("description");
+            $table->string("image_url")->nullable();
             $table->timestamps();
         });
+
+//        Schema::update();
     }
 
     /**

@@ -22,9 +22,9 @@ Route::post('/create/ticket','TicketController@store');
 Route::get('/tickets', 'TicketController@index');
 
 Route::get('/edit/ticket/{id}','TicketController@edit');
-Route::patch('/edit/ticket/{id}','TicketController@update');
+Route::patch('/edit/ticket/{id}','TicketController@update')->name('ticket.edit');
 
-Route::delete('/delete/ticket/{id}','TicketController@destroy');
+Route::delete('/delete/ticket/{id}','TicketController@destroy')->name('ticket.delete');;
 
 Auth::routes();
 

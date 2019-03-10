@@ -9,18 +9,23 @@
                         <li>{{ $error }}</li>
                     @endforeach
                 </ul>
-            </div><br />
+            </div><br/>
         @endif
         <div class="row">
             <form method="post" action="{{url('/create/ticket')}}">
                 <div class="form-group">
-                    <input type="hidden" value="{{csrf_token()}}" name="_token" />
+                    <input type="hidden" value="{{csrf_token()}}" name="_token"/>
                     <label for="title">Ticket Title:</label>
                     <input type="text" class="form-control" name="title"/>
                 </div>
                 <div class="form-group">
                     <label for="description">Ticket Description:</label>
                     <textarea cols="5" rows="5" class="form-control" name="description"></textarea>
+
+                </div>
+                <div class="form-group">
+                    <label for="image_url">Choose from the Internet:</label>
+                    <input type="input" name="image_url">
                 </div>
                 <button type="submit" class="btn btn-primary">Create</button>
             </form>

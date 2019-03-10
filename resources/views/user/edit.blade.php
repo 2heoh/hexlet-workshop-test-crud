@@ -24,6 +24,10 @@
                     <label for="description">Ticket Description:</label>
                     <textarea cols="5" rows="5" class="form-control" name="description">{{$ticket->description}}</textarea>
                 </div>
+                <div class="form-group">
+                    {{ $ticket->image_url }}
+                </div>
+
                 <button type="submit" class="btn btn-primary">Update</button>
             </form>
         </div>
