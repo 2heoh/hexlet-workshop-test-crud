@@ -23,8 +23,6 @@
         </whitelist>
     </filter>
     <php>
-        <env name="DB_CONNECTION" value="sqlite"/>
-        <env name="DB_DATABASE" value=":memory:"/>
         <server name="APP_ENV" value="testing"/>
         <server name="BCRYPT_ROUNDS" value="4"/>
         <server name="CACHE_DRIVER" value="array"/>
@@ -33,5 +31,6 @@
         <server name="SESSION_DRIVER" value="array"/>
         <env name="DB_DATABASE" value=":memory:"/>
         <env name="DB_CONNECTION" value="sqlite"/>
+        <env name="APP_KEY" value="base64:X1ndQIKFTvAhwu5MQB+qv+PuWZhTvch1wJB9ZvQkH5I="/>
     </php>
 </phpunit>
