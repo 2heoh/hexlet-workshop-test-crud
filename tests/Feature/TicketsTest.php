@@ -90,5 +90,4 @@ class TicketsTest extends TestCase
         $this->assertDatabaseHas('tickets', $data);
         Storage::disk('screenshots')->assertExists($data['image_url']);
     }
-
 }
