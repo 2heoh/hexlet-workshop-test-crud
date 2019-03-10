@@ -4,20 +4,18 @@ namespace Tests\Feature;
 
 use App\Ticket;
 use App\User;
-use Illuminate\Support\Facades\Artisan;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
 class TicketsTest extends TestCase
 {
+    use DatabaseMigrations;
     private $user;
 
     public function setUp(): void
     {
         parent::setUp();
-
-        Artisan::call('migrate');
-        Artisan::call('db:seed');
         $this->user = factory(User::class)->create();
     }
 
